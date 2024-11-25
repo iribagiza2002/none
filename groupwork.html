@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Price Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Ticket Price Calculator</h1>
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age" required>
+        <button onclick="calculateTicketPrice()">Calculate Price</button>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateTicketPrice() {
+            // Get the age input
+            const age = parseInt(document.getElementById("age").value);
+
+            // Get the result div
+            const resultDiv = document.getElementById("result");
+
+            // Validate the input
+            if (isNaN(age) || age <= 0) {
+                resultDiv.textContent = "Please enter a valid age.";
+                resultDiv.style.color = "red";
+                return;
+            }
+
+            let price;
+
+            // Determine ticket price based on age
+            if (age <= 12) {
+                price = 5; // Child ticket price
+            } else if (age >= 13 && age <= 64) {
+                price = 15; // Adult ticket price
+            } else if (age >= 65) {
+                price = 10; // Senior ticket price
+            }
+
+            // Display the result
+            resultDiv.textContent = `The ticket price for age ${age} is $${price}.`;
+            resultDiv.style.color = "green";
+        }
+    </script>
+</body>
+</html>
